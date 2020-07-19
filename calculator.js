@@ -2,7 +2,7 @@ const display = document.querySelector(".calcDisplay");
 const history = document.querySelector(".history");
 
 let displayVal = "0";
-let prevVal = "";
+let prevVal = "0";
 let selectedOperator = "";
 let startNewNum = true;
 let enterClicked = false;
@@ -34,7 +34,7 @@ function insertNumber(event) {
 
 function insertOperator(event) {
     if (enterClicked) {
-        history.innerText = displayVal + selectedOperator;
+        history.innerText = displayVal + (selectedOperator || event.target.innerText);
         prevVal = displayVal;
         enterClicked = false;
     }
@@ -42,14 +42,14 @@ function insertOperator(event) {
         let oldOperator = selectedOperator;
         selectedOperator = event.target.innerText; 
         history.innerText += displayVal + selectedOperator;
-        if (prevVal != "") displayVal = operate(oldOperator, prevVal, displayVal);
+        displayVal = operate(oldOperator, prevVal, displayVal);
         prevVal = displayVal;
         updateDisplay();
         startNewNum = true;
     }
     else {
         selectedOperator = event.target.innerText;
-        history.innerText = history.innerText.slice(0, -1) + selectedOperator; 
+        history.innerText = (history.innerText.slice(0, -1) || 0) + selectedOperator; 
     }
 }
 
@@ -69,6 +69,9 @@ function equate(event) {
 }
 
 function operate(op, prev, curr) {
+    if (op == "") {
+        return curr;
+    }
     [prev, curr] = [prev - 0, curr - 0];
     switch (op) {
         case "+":
@@ -86,7 +89,7 @@ function operate(op, prev, curr) {
 
 function clearAll() {
     displayVal = "0";
-    prevVal = "";
+    prevVal = "0";
     selectedOperator = "";
     history.innerText = "";
     startNewNum = true;

@@ -149,4 +149,8 @@ button:focus:not(:active)::after {
         top: 5rem;
         font-size: 3.5rem;
     }
+
+    button:hover {
+        background-color: #fffffe;
+    }
 }
