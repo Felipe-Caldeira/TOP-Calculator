@@ -1,0 +1,152 @@
+html {
+    font-size: 10px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+    "header"
+    "calculator"
+    "footer";
+    justify-items: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #16161a;
+}
+/* 
+header {
+    grid-area: header;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    padding: 2rem;
+    background-color: #7f5af0;
+    color: #fffffe;
+} */
+
+.calcContainer {
+    grid-area: calculator;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 40rem;
+    height: 60rem;
+    margin-top: 6rem;
+    border-radius: 2%;
+    overflow: hidden;
+    box-shadow: 0px 0px 12px 4px rgb(122, 122, 122);
+    position: relative;
+}
+
+.calcDisplay {
+    grid-area: 1 / 1 / 4 / 5;
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+
+    background-color: #f4f4f4;
+}
+
+.history {
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    font-size: 2.5rem;
+}
+
+button {
+    border: none;
+    font-size: 2.5rem;
+    transition: all .1s;
+    background-color: #fffffe;
+    position: relative;
+    overflow: hidden;
+    border: solid 1px rgba(0, 0, 0, .05);
+
+    -webkit-appearance: none;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+button:focus {
+    outline: none;
+}
+
+button::after {
+    display: none;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(127, 90, 240, 0.3);
+
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+
+    /* Center the ripple */
+    top: 50%;
+    left: 50%;
+
+    animation: ripple 1s;
+    opacity: 0;
+}
+
+button:focus:not(:active)::after {
+    display: block;
+}
+
+@keyframes ripple {
+    from {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(10);
+    }
+}
+
+.zero {
+    grid-area: 8 / 1 / 9 / 3;
+}
+
+.operator, .enter {
+    color: rgb(127, 90, 240);
+}
+
+.enter {
+    background-color: #2cb67d;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .calcContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .calcDisplay {
+        font-size: 6rem;
+    }
+
+    .history {
+        top: 5rem;
+        font-size: 3.5rem;
+    }
+}
