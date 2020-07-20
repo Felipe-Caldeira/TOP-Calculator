@@ -22,6 +22,55 @@ function setup() {
     document.querySelector(".enter").addEventListener("click", equate);
 
     document.querySelector(".delete").addEventListener("click", deleteChar);
+
+    // Keyboard controls
+    document.addEventListener("keydown", (e) => {
+        let dummyEvent = {
+            target: {
+                innerText: e.key,
+            }
+        }
+
+        switch (e.key) {
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+            case "0":
+                insertNumber(dummyEvent);
+                break;
+            case "+":
+            case "-":
+            case "%":
+                insertOperator(dummyEvent);
+                break;
+            case "*":
+                dummyEvent.target.innerText = "×";
+                insertOperator(dummyEvent);
+                break;
+            case "/":
+                dummyEvent.target.innerText = "÷";
+                insertOperator(dummyEvent);
+                break;
+            case ".":
+                insertDecimal(dummyEvent);
+                break;
+            case "Backspace":
+                deleteChar();
+                break;
+            case "Escape":
+                clearAll();
+                break;
+            case "Enter":
+                equate(dummyEvent);
+                break;            
+        }
+    })
 }
 
 function insertNumber(event) {
@@ -72,7 +121,7 @@ function insertDecimal(event) {
 
 function equate(event) {
     if (Debs()) return;
-    if (enterClicked) {
+    if (enterClicked && selectedOperator) {
         history.innerText = prevVal + selectedOperator + pastEquateVal + "=";
         displayVal = operate(selectedOperator, displayVal, pastEquateVal);
         prevVal = displayVal;
@@ -139,7 +188,7 @@ function clearAll() {
 function deleteChar() {
     if (!startNewNum) {
         displayVal = displayVal.slice(0, -1);
-        if (!displayVal) displayVal = 0;
+        if (!displayVal) displayVal = "0";
         updateDisplay();
     }
 }
