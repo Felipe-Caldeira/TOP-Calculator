@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <title>Calculator</title>
 </head>
@@ -12,26 +13,38 @@
         <div class="calcDisplay">0</div>
         <div class="history"></div>
         <button class="clear" onclick="clearAll()">C</button>
-        <button class="delete">DEL</button>
+        <button class="delete">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-backspace" width="48"
+                height="48" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M20 6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-11l-5 -5a1.5 1.5 0 0 1 0 -2l5 -5Z" />
+                <path d="M12 10l4 4m0 -4l-4 4" />
+            </svg></button>
         <button class="operator">%</button>
-        <button class="operator divide">÷</button>
+        <button class="operator">÷</button>
         <button class="number">7</button>
         <button class="number">8</button>
         <button class="number">9</button>
-        <button class="operator multiply">×</button>
+        <button class="operator">×</button>
         <button class="number">4</button>
         <button class="number">5</button>
         <button class="number">6</button>
-        <button class="operator subtract">-</button>
+        <button class="operator">-</button>
         <button class="number">1</button>
         <button class="number">2</button>
         <button class="number">3</button>
-        <button class="operator add">+</button>
+        <button class="operator">+</button>
         <button class="number zero">0</button>
         <button class="decimal">.</button>
         <button class="enter">=</button>
+        <svg class="heart" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path
+                d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z" />
+        </svg>
     </div>
-
+    
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.1.0/math.js" type="text/javascript"></script>
     <script src="calculator.js"></script>
 </body>

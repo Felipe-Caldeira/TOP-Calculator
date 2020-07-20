@@ -45,20 +45,27 @@ header {
 
 .calcDisplay {
     grid-area: 1 / 1 / 4 / 5;
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     padding: 1rem;
+    padding-bottom: 4rem;
+    font-family: 'Roboto', sans-serif;
 
     background-color: #f4f4f4;
 }
 
 .history {
+    width: 95%;
+    height: auto;
+    text-align: right;
+    word-wrap: break-word;
     position: absolute;
     right: 1rem;
     top: 3rem;
     font-size: 2.5rem;
+    /* background-color: pink; */
 }
 
 button {
@@ -117,6 +124,21 @@ button:focus:not(:active)::after {
     }
 }
 
+.clear {
+    color: red;
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete svg {
+    width: 50%;
+    height: 50%;
+}
+
 .zero {
     grid-area: 8 / 1 / 9 / 3;
 }
@@ -142,7 +164,7 @@ button:focus:not(:active)::after {
     }
 
     .calcDisplay {
-        font-size: 6rem;
+        font-size: 4rem;
     }
 
     .history {
@@ -152,5 +174,33 @@ button:focus:not(:active)::after {
 
     button:hover {
         background-color: #fffffe;
+    }
+
+}
+
+
+
+
+
+
+.heart {
+    position: absolute;
+    fill: red;
+    width: 0rem;
+    height: 0rem;
+    bottom: 0;
+    right: 0;
+}
+
+.heartGrow {
+    animation-name: heartGrows;
+    animation-duration: 3s;
+}
+
+@keyframes heartGrows {
+    100% {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
     }
 }
